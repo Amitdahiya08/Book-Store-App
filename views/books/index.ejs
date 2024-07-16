@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>Book Store App</title>
+</head>
+<body>
+    <h1>Book Store App</h1>
+
+    <% if (books.length > 0) { %>
+        <ul>
+            <% books.forEach(function(book) { %>
+                <li>
+                    <h2><%= book.name %></h2>
+                    <div>
+                        <img src="<%= book.image %>" alt="<%= book.name %> Cover" class="book-image" width="200px">
+                    </div>
+                    <br>
+                    <button onclick="buyBook('<%= book._id %>')">Buy Now</button>
+                    <p><strong>Author:</strong> <%= book.authorName %></p>
+                    <p><strong>Price:</strong> $<%= book.price.toFixed(2) %></p>
+                    <p><strong>Copies Sold:</strong> <span id="copies-<%= book._id %>"><%= book.copiesSold %></span></p>
+                    <p><strong>Release Date:</strong> <%= book.releaseDate.toDateString() %></p>
+                    <p><strong>Rating:</strong> <%= book.rating %> ⭐ / 5</p>
+                    <p><strong>Publisher:</strong> <%= book.publisherName %></p>
+                    <p><%= book.about %></p>
+                    <hr>
+                </li>
+            <% }); %>
+        </ul>
+    <% } else { %>
+        <p>No books found.</p>
+    <% } %>
+
+    <script>
+        function buyBook(bookId) {
+            if (confirm('Are you sure you want to buy this book?')) {
+                fetch(`/buy/${bookId}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        document.getElementById(`copies-${bookId}`).innerText = data.copiesSold;
+                    } else {
+                        alert('Error buying the book.');
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+            }
+        }
+    </script>
+</body>
+</html>

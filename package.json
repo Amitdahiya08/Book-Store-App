@@ -1,0 +1,25 @@
+{
+  "name": "book-store-app",
+  "version": "1.0.0",
+  "description": "��#\u0000 \u0000S\u0000p\u0000l\u0000i\u0000t\u0000w\u0000i\u0000s\u0000e\u0000\r\u0000 \u0000",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Amitdahiya08/Book-Store-App.git"
+  },
+  "author": "Amit Dahiya",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Amitdahiya08/Book-Store-App/issues"
+  },
+  "homepage": "https://github.com/Amitdahiya08/Book-Store-App#readme",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "mongoose": "^8.5.1",
+    "nodemon": "^3.1.4"
+  }
+}

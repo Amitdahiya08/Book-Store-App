@@ -1,0 +1,10 @@
+  /* CSS for images */
+  .book-image {
+    max-width: 100px; /* Adjust as needed */
+    height: 10px;
+    display: block;
+    margin-bottom: 10px; /* Optional margin */
+}
+body{
+  background-color: red;
+}
